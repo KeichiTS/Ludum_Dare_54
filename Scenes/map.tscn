@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6muxatkdqiwd"]
+
+[ext_resource type="Texture2D" uid="uid://gmw2n5v850fb" path="res://Holder_sprites/PNG/Tiles/tile_333.png" id="1_7h3pu"]
+[ext_resource type="PackedScene" uid="uid://dw8b6a4s0lmqd" path="res://Player/player.tscn" id="2_bu5nw"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ntmr"]
+texture = ExtResource("1_7h3pu")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_a1aqt"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_1ntmr")
+
+[node name="Map" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_a1aqt")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 65553, 1, 0, 131089, 1, 0, 196625, 1, 0, 262161, 1, 0, 327697, 1, 0, 393233, 1, 0, 458769, 1, 0, 524305, 1, 0, 589841, 1, 0, 65536, 1, 0, 131072, 1, 0, 196608, 1, 0, 262144, 1, 0, 327680, 1, 0, 393216, 1, 0, 458752, 1, 0, 524288, 1, 0, 589824, 1, 0, 589825, 1, 0, 589826, 1, 0, 589827, 1, 0, 589828, 1, 0, 589829, 1, 0, 589830, 1, 0, 589831, 1, 0, 589832, 1, 0, 589833, 1, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 589837, 1, 0, 589838, 1, 0, 589839, 1, 0, 589840, 1, 0, 196617, 1, 0, 262153, 1, 0, 327689, 1, 0, 327690, 1, 0, 327691, 1, 0, 393227, 1, 0, 393228, 1, 0, 327692, 1, 0, 262156, 1, 0, 262157, 1, 0, 196621, 1, 0, 196620, 1, 0, 131084, 1, 0, 131083, 1, 0, 196619, 1, 0, 196618, 1, 0, 262154, 1, 0, 262155, 1, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_bu5nw")]
+position = Vector2(336, 200)

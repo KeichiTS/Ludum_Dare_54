@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw8b6a4s0lmqd"]
+
+[ext_resource type="Script" path="res://Player/Scripts/Player.gd" id="1_4srqw"]
+[ext_resource type="Texture2D" uid="uid://c5bkyioemxs7k" path="res://Holder_sprites/PNG/Man Blue/manBlue_stand.png" id="2_0wi0l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bv64l"]
+radius = 29.1204
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_4srqw")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_0wi0l")
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 0)
+shape = SubResource("CircleShape2D_bv64l")
+
+[node name="anim" type="AnimationPlayer" parent="."]
