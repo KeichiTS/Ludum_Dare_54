@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6muxatkdqiwd"]
+[gd_scene load_steps=12 format=3 uid="uid://c6muxatkdqiwd"]
 
 [ext_resource type="Texture2D" uid="uid://gmw2n5v850fb" path="res://Holder_sprites/PNG/Tiles/tile_333.png" id="1_7h3pu"]
 [ext_resource type="PackedScene" uid="uid://dw8b6a4s0lmqd" path="res://Player/player.tscn" id="2_bu5nw"]
 [ext_resource type="Texture2D" uid="uid://cktsikhigqfqp" path="res://assets/light.png" id="3_mocbe"]
+[ext_resource type="Texture2D" uid="uid://dn33wv6umf838" path="res://assets/BARATA-Sheet.png" id="4_1sntl"]
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="4_y8txu"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_517eh"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
@@ -22,9 +24,19 @@ occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_1ntmr")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_15dlj"]
+radius = 17.2047
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aqoyg"]
+radius = 278.352
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4pi0m"]
+radius = 40.0
+
 [node name="Map" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 1154.0
 offset_bottom = 647.0
 
@@ -37,18 +49,46 @@ layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0
 position = Vector2(336, 200)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 0.929412)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(277, 643)
 rotation = -1.5708
 scale = Vector2(2, 1)
-energy = 0.2
+energy = 0.1
 texture = ExtResource("3_mocbe")
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 position = Vector2(795, 623)
 rotation = -1.5708
 scale = Vector2(2, 1)
-energy = 0.2
+energy = 0.1
 texture = ExtResource("3_mocbe")
+
+[node name="Enemy" type="CharacterBody2D" parent="." node_paths=PackedStringArray("target")]
+position = Vector2(1000, 143)
+script = ExtResource("4_y8txu")
+target = NodePath("../Player")
+
+[node name="sprite" type="Sprite2D" parent="Enemy"]
+texture = ExtResource("4_1sntl")
+hframes = 10
+
+[node name="shape" type="CollisionShape2D" parent="Enemy"]
+shape = SubResource("CircleShape2D_15dlj")
+
+[node name="DetectionArea" type="Area2D" parent="Enemy"]
+
+[node name="shape" type="CollisionShape2D" parent="Enemy/DetectionArea"]
+shape = SubResource("CircleShape2D_aqoyg")
+
+[node name="HitBox" type="Area2D" parent="Enemy"]
+
+[node name="shape" type="CollisionShape2D" parent="Enemy/HitBox"]
+shape = SubResource("CircleShape2D_4pi0m")
+
+[node name="anim" type="AnimationPlayer" parent="Enemy"]
+
+[connection signal="body_entered" from="Enemy/DetectionArea" to="Enemy" method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="Enemy/DetectionArea" to="Enemy" method="_on_detection_area_body_exited"]
