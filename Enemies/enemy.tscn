@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://bb15l57ihdjhq"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_08jwy"]
+[ext_resource type="Texture2D" uid="uid://dn33wv6umf838" path="res://assets/BARATA-Sheet.png" id="2_d2x1y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_15dlj"]
+radius = 17.2047
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aqoyg"]
+radius = 120.814
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tce4d"]
+radius = 207.039
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4pi0m"]
+radius = 40.0
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_08jwy")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_d2x1y")
+hframes = 10
+
+[node name="shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_15dlj")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="shape" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_aqoyg")
+
+[node name="Stop_chasing_area" type="Area2D" parent="."]
+
+[node name="shape" type="CollisionShape2D" parent="Stop_chasing_area"]
+shape = SubResource("CircleShape2D_tce4d")
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="shape" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_4pi0m")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_exited" from="Stop_chasing_area" to="." method="_on_stop_chasing_area_body_exited"]

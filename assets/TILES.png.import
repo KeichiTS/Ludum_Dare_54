@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdbu1qshkm0lm"
-path="res://.godot/imported/Novo Projeto.png-a45d6d4b7ed57351194975f0d1b069c1.ctex"
+uid="uid://q2cdtltvw5k4"
+path="res://.godot/imported/TILES.png-0359ab63fe15698b73c9d209bf13c72d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Novo Projeto.png"
-dest_files=["res://.godot/imported/Novo Projeto.png-a45d6d4b7ed57351194975f0d1b069c1.ctex"]
+source_file="res://assets/TILES.png"
+dest_files=["res://.godot/imported/TILES.png-0359ab63fe15698b73c9d209bf13c72d.ctex"]
 
 [params]
 
@@ -23,7 +23,7 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false
 mipmaps/limit=-1
-roughness/mode=0
+roughness/mode=1
 roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false

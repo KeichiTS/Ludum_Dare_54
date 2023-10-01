@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 150.0
+const SPEED = 50.0
 
 @export var target : Node
 
@@ -23,6 +23,6 @@ func _on_detection_area_body_entered(body):
 		
 
 
-func _on_detection_area_body_exited(body):
+func _on_stop_chasing_area_body_exited(body):
 	if body == target:
 		chasing = false 
