@@ -18,29 +18,33 @@ func move() -> void:
 	move_and_slide()
 
 	####changing face
-	if velocity.x > 0 and velocity.y == 0:
-		rotation = 0
-		
-	elif velocity.x < 0 and velocity.y == 0:
-		rotation = PI
-			
-	elif velocity.x == 0 and velocity.y > 0:
-		rotation = PI/2
-			
-	elif velocity.x == 0 and velocity.y < 0:
-		rotation = -PI/2
-			
-	elif velocity.x > 0 and velocity.y > 0:
-		rotation = PI/4
-		
-	elif velocity.x > 0 and velocity.y < 0:
-		rotation = -PI/4
 
-	elif velocity.x < 0 and velocity.y > 0:
-		rotation = 3 * PI / 4
-			
-	elif velocity.x < 0  and velocity.y < 0:
-		rotation = 4 * PI / 3
+	look_at(get_global_mouse_position())
+	
+	
+#	if velocity.x > 0 and velocity.y == 0:
+#		rotation = 0
+#
+#	elif velocity.x < 0 and velocity.y == 0:
+#		rotation = PI
+#
+#	elif velocity.x == 0 and velocity.y > 0:
+#		rotation = PI/2
+#
+#	elif velocity.x == 0 and velocity.y < 0:
+#		rotation = -PI/2
+#
+#	elif velocity.x > 0 and velocity.y > 0:
+#		rotation = PI/4
+#
+#	elif velocity.x > 0 and velocity.y < 0:
+#		rotation = -PI/4
+#
+#	elif velocity.x < 0 and velocity.y > 0:
+#		rotation = 3 * PI / 4
+#
+#	elif velocity.x < 0  and velocity.y < 0:
+#		rotation = 4 * PI / 3
 
 
 

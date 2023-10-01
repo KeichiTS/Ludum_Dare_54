@@ -14,3 +14,11 @@ config/name="Ludum_Dare_54"
 run/main_scene="res://Player/player.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="canvas_items"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
