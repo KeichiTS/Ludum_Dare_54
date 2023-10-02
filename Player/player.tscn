@@ -30,5 +30,5 @@ texture = ExtResource("3_23mup")
 limit_left = 0
 limit_top = -6
 limit_right = 1536
-limit_bottom = 1066
+limit_bottom = 1064
 position_smoothing_enabled = true
