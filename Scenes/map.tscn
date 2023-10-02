@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://c6muxatkdqiwd"]
+[gd_scene load_steps=42 format=3 uid="uid://c6muxatkdqiwd"]
 
 [ext_resource type="Texture2D" uid="uid://gmw2n5v850fb" path="res://Holder_sprites/PNG/Tiles/tile_333.png" id="1_7h3pu"]
 [ext_resource type="Script" path="res://Scripts/map.gd" id="1_p6yuj"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://31jmubk4ytxe" path="res://assets/door.png" id="10_tggun"]
 [ext_resource type="Texture2D" uid="uid://d4jvwpxc0c48n" path="res://assets/light_indicator_green.png" id="12_c4p6h"]
 [ext_resource type="Script" path="res://Scripts/End_game.gd" id="13_21smx"]
+[ext_resource type="AudioStream" uid="uid://dh28h8o7fckpy" path="res://Audio/sfx_coin_cluster3.wav" id="15_y5k4h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6uafj"]
 texture = ExtResource("1_ynnrg")
@@ -229,21 +230,6 @@ polygon = PackedVector2Array(-12, 2, 12, 2, 12, -2, -12, -2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gim30"]
 size = Vector2(20, 60)
 
-[sub_resource type="Animation" id="Animation_jpsik"]
-resource_name = "event1"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_0b76i"]
 length = 0.001
 tracks/0/type = "value"
@@ -257,6 +243,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jpsik"]
+resource_name = "event1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_kk2bs"]
@@ -569,6 +570,11 @@ shape = SubResource("RectangleShape2D_gim30")
 libraries = {
 "": SubResource("AnimationLibrary_087tb")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_y5k4h")
+volume_db = -5.0
+pitch_scale = 0.89
 
 [connection signal="body_entered" from="Button_and_door/button" to="Button_and_door" method="_on_button_body_entered"]
 [connection signal="body_entered" from="Button_and_door2/button" to="Button_and_door2" method="_on_button_body_entered"]

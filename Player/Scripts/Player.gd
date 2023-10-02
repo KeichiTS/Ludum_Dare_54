@@ -7,6 +7,7 @@ var rotatio_speed := 8.0
 
 @export var speed : int = 300  # move speed in pixels/sec
 @export var acelleration := 10
+@onready var audio_stream_player = $AudioStreamPlayer
 
 var stop = true 
 
@@ -44,6 +45,8 @@ func move(delta) -> void:
 func die():
 	#get_tree().reload_current_scene()
 	if get_parent().name == 'Map':
+		audio_stream_player.play()
+		await audio_stream_player.finished
 		get_parent().restart_level()
 
 ###################################################

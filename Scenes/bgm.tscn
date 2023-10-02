@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk7gkuq5arw05"]
+
+[ext_resource type="AudioStream" uid="uid://dqo5dgdy423hl" path="res://Audio/Exploring a cave.mp3" id="1_p8eam"]
+
+[node name="BGM" type="Node"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_p8eam")
+volume_db = -5.0
+autoplay = true

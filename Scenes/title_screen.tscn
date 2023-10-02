@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://r4up3e4jdfmr"]
+[gd_scene load_steps=15 format=3 uid="uid://r4up3e4jdfmr"]
 
 [ext_resource type="Script" path="res://Scripts/title_screen.gd" id="1_rixme"]
 [ext_resource type="Texture2D" uid="uid://q2cdtltvw5k4" path="res://assets/TILES.png" id="2_sl2kp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cktsikhigqfqp" path="res://assets/light.png" id="4_ngscq"]
 [ext_resource type="Shader" path="res://Shaders/CRT.gdshader" id="5_cgpac"]
 [ext_resource type="Texture2D" uid="uid://d2gqv7pad07bj" path="res://assets/output-onlinepngtools.png" id="6_g1kx1"]
+[ext_resource type="AudioStream" uid="uid://ljyp0oqq8vdq" path="res://Audio/sfx_coin_single1.wav" id="7_iv7vw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8xt0r"]
 texture = ExtResource("2_sl2kp")
@@ -69,6 +70,33 @@ sources/1 = SubResource("TileSetAtlasSource_8xt0r")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l85w7"]
 shader = ExtResource("5_cgpac")
 
+[sub_resource type="Animation" id="Animation_nk8sq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Play:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_70q6a"]
 resource_name = "event1"
 tracks/0/type = "value"
@@ -84,21 +112,6 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_nk8sq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_3dbl0"]
 resource_name = "event2"
 tracks/0/type = "value"
@@ -112,6 +125,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Play:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_egip5"]
@@ -209,5 +234,10 @@ texture = ExtResource("6_g1kx1")
 libraries = {
 "": SubResource("AnimationLibrary_egip5")
 }
+
+[node name="Play" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_iv7vw")
+volume_db = -5.0
+pitch_scale = 0.93
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
