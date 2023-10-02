@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dw8b6a4s0lmqd"]
+[gd_scene load_steps=8 format=3 uid="uid://dw8b6a4s0lmqd"]
 
 [ext_resource type="Script" path="res://Player/Scripts/Player.gd" id="1_4srqw"]
 [ext_resource type="Texture2D" uid="uid://ddbssg1pduhoh" path="res://assets/EXPLORER-Sheet.png" id="2_naqoe"]
@@ -6,6 +6,44 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bv64l"]
 radius = 13.6015
+
+[sub_resource type="Animation" id="Animation_xxlp0"]
+resource_name = "moving"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_a3v44"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2uqr7"]
+_data = {
+"RESET": SubResource("Animation_a3v44"),
+"moving": SubResource("Animation_xxlp0")
+}
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_4srqw")
@@ -19,6 +57,9 @@ position = Vector2(-4, 0)
 shape = SubResource("CircleShape2D_bv64l")
 
 [node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2uqr7")
+}
 
 [node name="light" type="PointLight2D" parent="."]
 position = Vector2(0, -2)

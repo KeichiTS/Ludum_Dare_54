@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bp81fbcvnurwy"]
+[gd_scene load_steps=7 format=3 uid="uid://bp81fbcvnurwy"]
 
 [ext_resource type="Script" path="res://Scripts/Shooter_enemy.gd" id="1_l1a36"]
 [ext_resource type="Texture2D" uid="uid://b43jdt1q8qp58" path="res://assets/BARATA_PAREDE.png" id="2_evtxy"]
@@ -6,13 +6,64 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2wogh"]
 size = Vector2(22, 27)
 
+[sub_resource type="Animation" id="Animation_rbpn4"]
+resource_name = "shooting"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shoot"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 1.2, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_2x1qy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_islqe"]
+_data = {
+"RESET": SubResource("Animation_2x1qy"),
+"shooting": SubResource("Animation_rbpn4")
+}
+
 [node name="Shooter_enemy" type="StaticBody2D"]
 script = ExtResource("1_l1a36")
 
 [node name="sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_evtxy")
 hframes = 4
-frame = 3
 
 [node name="shape" type="CollisionShape2D" parent="."]
 position = Vector2(-6, 0.5)
@@ -24,5 +75,10 @@ position = Vector2(8, 0)
 [node name="timer" type="Timer" parent="."]
 wait_time = 1.5
 autostart = true
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_islqe")
+}
 
 [connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

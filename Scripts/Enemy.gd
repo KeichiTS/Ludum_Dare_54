@@ -20,12 +20,14 @@ func move_and_look():
 func _on_detection_area_body_entered(body):
 	if body == target:
 		chasing = true
+		$anim.play('chasing')
 		
 
 
 func _on_stop_chasing_area_body_exited(body):
 	if body == target:
 		chasing = false 
+		$anim.pause()
 
 
 func _on_hit_box_body_entered(body):

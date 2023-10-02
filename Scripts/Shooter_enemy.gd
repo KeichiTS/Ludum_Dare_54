@@ -4,12 +4,13 @@ var bullet = preload("res://Objects/bullet.tscn")
 
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _ready() -> void:
+	$anim.play("shooting")
 
+#func _on_timer_timeout():
+#	shoot()
 
-func _on_timer_timeout():
+func shoot() -> void:
 	var ammo = bullet.instantiate()
 	ammo.global_position = $muzzle.global_position
 	if rotation_degrees > 0:
