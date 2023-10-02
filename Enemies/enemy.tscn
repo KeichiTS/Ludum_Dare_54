@@ -13,7 +13,7 @@ radius = 120.814
 radius = 207.039
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4pi0m"]
-radius = 40.0
+radius = 31.0161
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_08jwy")
@@ -45,3 +45,4 @@ shape = SubResource("CircleShape2D_4pi0m")
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_exited" from="Stop_chasing_area" to="." method="_on_stop_chasing_area_body_exited"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0t6qqoy31avm"]
+
+[ext_resource type="Script" path="res://Scripts/left_right_enemy.gd" id="1_fq88l"]
+[ext_resource type="Texture2D" uid="uid://cmcui1jcoi358" path="res://assets/BARATINHA.png" id="2_ruejt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ypxst"]
+size = Vector2(35, 16)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ghexl"]
+b = Vector2(24, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hrkoi"]
+radius = 13.0
+height = 42.0
+
+[node name="left_right_enemy" type="CharacterBody2D"]
+script = ExtResource("1_fq88l")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_ruejt")
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_ypxst")
+
+[node name="area" type="Area2D" parent="."]
+
+[node name="shape" type="CollisionShape2D" parent="area"]
+shape = SubResource("SegmentShape2D_ghexl")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="shape" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-2, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_hrkoi")
+
+[connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

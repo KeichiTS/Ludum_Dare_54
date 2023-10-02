@@ -3,7 +3,7 @@
 extends CharacterBody2D
 
 var vel = Vector2.ZERO
-var rotatio_speed := 2.0
+var rotatio_speed := 4.0
 
 @export var speed : int = 300  # move speed in pixels/sec
 @export var acelleration := 10
@@ -29,32 +29,8 @@ func move(delta) -> void:
 	var angle_to = transform.x.angle_to(direction_to_look)
 	rotate(sign(angle_to)*min(delta*rotatio_speed,abs(angle_to)))
 
-	
-#	if velocity.x > 0 and velocity.y == 0:
-#		rotation = 0
-#
-#	elif velocity.x < 0 and velocity.y == 0:
-#		rotation = PI
-#
-#	elif velocity.x == 0 and velocity.y > 0:
-#		rotation = PI/2
-#
-#	elif velocity.x == 0 and velocity.y < 0:
-#		rotation = -PI/2
-#
-#	elif velocity.x > 0 and velocity.y > 0:
-#		rotation = PI/4
-#
-#	elif velocity.x > 0 and velocity.y < 0:
-#		rotation = -PI/4
-#
-#	elif velocity.x < 0 and velocity.y > 0:
-#		rotation = 3 * PI / 4
-#
-#	elif velocity.x < 0  and velocity.y < 0:
-#		rotation = 4 * PI / 3
-
-
+func die():
+	get_tree().reload_current_scene()
 
 ###################################################
 #     ~ It ain't much, but it's honest work ~     #
@@ -80,6 +56,5 @@ func move(delta) -> void:
 ###################################################
 #               ~ KeichiTS - 2023 ~               #
 ###################################################
-
 
 

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://r4up3e4jdfmr"]
+
+[ext_resource type="Script" path="res://Scripts/title_screen.gd" id="1_rixme"]
+
+[node name="Title_screen" type="Node"]
+script = ExtResource("1_rixme")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 110.0
+offset_top = 188.0
+offset_right = 155.0
+offset_bottom = 219.0
+text = "Play!"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

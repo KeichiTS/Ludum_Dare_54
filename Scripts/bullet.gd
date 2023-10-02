@@ -17,3 +17,5 @@ func _on_area_entered(area):
 func _on_body_entered(body):
 	if body.is_in_group('object'):
 		queue_free()
+	if body.is_in_group('player'):
+		body.die()

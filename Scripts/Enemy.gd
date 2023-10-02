@@ -26,3 +26,8 @@ func _on_detection_area_body_entered(body):
 func _on_stop_chasing_area_body_exited(body):
 	if body == target:
 		chasing = false 
+
+
+func _on_hit_box_body_entered(body):
+	if body.is_in_group('player'):
+		body.die()

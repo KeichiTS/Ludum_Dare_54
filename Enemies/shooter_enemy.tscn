@@ -1,25 +1,28 @@
 [gd_scene load_steps=4 format=3 uid="uid://bp81fbcvnurwy"]
 
 [ext_resource type="Script" path="res://Scripts/Shooter_enemy.gd" id="1_l1a36"]
-[ext_resource type="Texture2D" uid="uid://cuoico7pqbl1n" path="res://icon.svg" id="2_2e7c3"]
+[ext_resource type="Texture2D" uid="uid://b43jdt1q8qp58" path="res://assets/BARATA_PAREDE.png" id="2_evtxy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2wogh"]
-size = Vector2(38, 38)
+size = Vector2(22, 27)
 
 [node name="Shooter_enemy" type="StaticBody2D"]
 script = ExtResource("1_l1a36")
 
 [node name="sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_2e7c3")
+texture = ExtResource("2_evtxy")
+hframes = 4
+frame = 3
 
 [node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2(-6, 0.5)
 shape = SubResource("RectangleShape2D_2wogh")
 
 [node name="muzzle" type="Marker2D" parent="."]
-position = Vector2(31, 0)
+position = Vector2(8, 0)
 
 [node name="timer" type="Timer" parent="."]
+wait_time = 1.5
 autostart = true
 
 [connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

@@ -30,6 +30,6 @@ texture = ExtResource("3_23mup")
 zoom = Vector2(0.8, 0.8)
 limit_left = 0
 limit_top = -6
-limit_right = 1536
+limit_right = 1024
 limit_bottom = 1064
 position_smoothing_enabled = true
