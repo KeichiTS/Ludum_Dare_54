@@ -558,7 +558,7 @@ shadow_enabled = true
 texture = ExtResource("12_c4p6h")
 
 [node name="End_game" type="Area2D" parent="."]
-position = Vector2(1043, 548)
+position = Vector2(1043, 550)
 script = ExtResource("13_21smx")
 
 [node name="shape" type="CollisionShape2D" parent="End_game"]
