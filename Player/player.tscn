@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_bv64l"]
 radius = 13.6015
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_4srqw")
 
 [node name="sprite" type="Sprite2D" parent="."]
@@ -27,6 +27,7 @@ shadow_enabled = true
 texture = ExtResource("3_23mup")
 
 [node name="camera" type="Camera2D" parent="."]
+zoom = Vector2(0.8, 0.8)
 limit_left = 0
 limit_top = -6
 limit_right = 1536

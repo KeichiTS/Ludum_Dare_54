@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cys3ih8xuhbic"]
+
+[ext_resource type="Texture2D" uid="uid://cmcui1jcoi358" path="res://assets/BARATINHA.png" id="1_8vkwc"]
+[ext_resource type="Script" path="res://Scripts/chaser.gd" id="1_tm3nw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7pyvr"]
+radius = 16.0
+height = 38.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o4dph"]
+radius = 186.0
+
+[node name="Chaser" type="CharacterBody2D"]
+script = ExtResource("1_tm3nw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8vkwc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 0)
+shape = SubResource("CapsuleShape2D_7pyvr")
+
+[node name="Detection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+shape = SubResource("CircleShape2D_o4dph")
+
+[node name="NaviAgent" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+avoidance_enabled = true
+
+[node name="ReturnTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="Detection" to="." method="_on_detection_body_exited"]
+[connection signal="velocity_computed" from="NaviAgent" to="." method="_on_navi_agent_velocity_computed"]
+[connection signal="timeout" from="ReturnTimer" to="." method="_on_return_timer_timeout"]
